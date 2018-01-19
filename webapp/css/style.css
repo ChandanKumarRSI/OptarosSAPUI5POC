@@ -1,1 +1,33 @@
 /* Enter your custom styles here */
+.logo{
+    width: 6rem;
+    padding-left: 12px;
+    
+}
+.titleText {
+    font-size: 25px;
+    font-weight: bold;
+    color: #4185f4 !important;
+}
+.iconLogout {
+    color: #4185f4;
+    width: 50px;
+    font-size: 28px;
+    font-weight: bold;
+}
+.iconLogout:hover{
+    color:#33e8ff;
+}
+.sapMPage>.sapMPageHeader + section, .sapMPage>.sapMPageSubHeader + section, .sapMPage>.sapMPageHeader + .sapUiHiddenPlaceholder + section {
+    top: 5rem !important;;
+}
+.sapMIBar.sapMHeader-CTX {
+    color: #666666;
+    background-color: #fff !important;
+    filter: none;
+    background-image: none;
+    height: 5rem !important;;
+}
+.sapUiIcon {
+    outline-color: rgba(255, 0, 0, 0) !important;
+}
