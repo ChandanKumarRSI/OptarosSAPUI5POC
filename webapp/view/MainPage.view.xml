@@ -5,7 +5,7 @@
 			<Page id="idMainPage" backgroundDesign="Solid" showFooter="false">
                 <customHeader>
                     <Toolbar>
-                        <Image src="images/rslogo.png" class="rsLogo" densityAware="false"></Image>
+                        <Image src="images/rsys.png" class="rsLogo" densityAware="false"></Image>
                         <ToolbarSpacer/>
                         <Title text="Optaros SAPUI5 POC"/>
                         <ToolbarSpacer/>
