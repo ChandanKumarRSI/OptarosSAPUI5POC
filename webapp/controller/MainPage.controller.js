@@ -3,7 +3,7 @@ sap.ui.define([
 ], function(Controller) {
 	"use strict";
 
-	return Controller.extend("OptarosSAPUI5POC1.controller.MainPage", {
+	return Controller.extend("OptarosSAPUI5POC.controller.MainPage", {
 
 	});
 });
