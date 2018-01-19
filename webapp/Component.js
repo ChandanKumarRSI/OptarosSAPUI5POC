@@ -5,7 +5,7 @@ sap.ui.define([
 ], function(UIComponent, Device, models) {
 	"use strict";
 
-	return UIComponent.extend("OptarosSAPUI5POC1.Component", {
+	return UIComponent.extend("OptarosSAPUI5POC.Component", {
 
 		metadata: {
 			manifest: "json"
