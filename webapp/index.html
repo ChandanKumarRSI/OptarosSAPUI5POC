@@ -15,21 +15,10 @@
 			data-sap-ui-compatVersion="edge"
 			data-sap-ui-resourceroots='{"OptarosSAPUI5POC": ""}'>
 		</script>
-
+        <link rel="stylesheet" href="css/font-awesome.min.css" />
 		<link rel="stylesheet" type="text/css" href="css/style.css">
         <link rel="stylesheet" type="text/css" href="css/LoginStyle.css">
         <!--<script type="text/javascript" src="cordova.js"></script>-->
-		<script> 
-			// sap.ui.getCore().attachInit(function() {
-			// 	new sap.m.Shell({
-			// 		app: new sap.ui.core.ComponentContainer({
-			// 			height : "100%",
-			// 			name : "OptarosSAPUI5POC"
-			// 		})
-			// 	}).placeAt("content");
-			// });
-		</script>
-		
 		<script>
             busyDialog = new sap.m.BusyDialog("idBusyDia",{});
             function hideBusyIndicator() {
@@ -52,7 +41,7 @@
             }
             
             function show3000() {
-                this.showBusyIndicator(3000);
+                this.showBusyIndicator(4000);
             }
             
             function callComponent() {
@@ -67,6 +56,7 @@
             }
             
             function appReady() {
+            	$("#splash-screen").remove();
             $("#idLoginPage").fadeIn(2000).show();	
             }
             
@@ -80,15 +70,34 @@
             }
             
             function onPressLoginBtn(){
-                var users = ["user1"];
+            	busyDialog.open();
+                var users = ["user"];
                 var password = ["welcome"];
                 var sUsername = $("#userid").val();
                 var sPassword = $("#password").val();
                 if(sUsername===users[0] && sPassword===password[0]){
                 $("#idErrorTxt").hide();
-                callComponent();
+               
+               var sURL = "/V2/Northwind/Northwind.svc"
+                $.ajax({
+                       url : sURL,
+                       async: true,
+                       type : "GET",
+                       success : function(data, textStatus, jqXHR) {
+                       console.log("SUCCESS");
+                       busyDialog.close();
+                       $("#idErrorTxt").hide();
+               callComponent();
+               },
+               error : function(xhr, status) {
+               console.log("ERROR");
+               busyDialog.close();
+               $("#idErrorTxt").show();
+               }
+               });
                 }else{
-                $("#idErrorTxt").show();	
+                $("#idErrorTxt").show();
+                busyDialog.close();
                 }
             }
 		</script>
@@ -97,6 +106,11 @@
 	</head>
 
 	<body class="sapUiBody" id="content">
+		<div id="splash-screen">
+            <div class="splash-screen-text">Loading Opraros</div>
+            <div class="splash-screen-circle-outer"></div>
+            <div class="splash-screen-circle-inner"></div>
+        </div>
 		<div id="idLoginPage" class="main-rs" hidden>
             <h2><img src="images/logo.png" alt="Optaros" class="t-rs" ></h2>
             <div class="login-rsL">

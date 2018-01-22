@@ -1,4 +1,9 @@
 /* Enter your custom styles here */
+.errTxt {
+    display: block;
+    color: #d01c1c;
+    font-family: serif;
+}
 .rsLogo{
     width: 5rem;
     padding-left: 12px;

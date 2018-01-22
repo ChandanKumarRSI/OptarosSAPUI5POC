@@ -1,6 +1,15 @@
 {
   "welcomeFile": "/webapp/index.html",
   "routes": [
+  	{
+      "path": "/V2/Northwind",
+      "target": {
+        "type": "destination",
+        "name": "Northwind",
+        "entryPath": "/V2/Northwind"
+      },
+      "description": "Northwind"
+    },
     {
       "path": "/resources",
       "target": {

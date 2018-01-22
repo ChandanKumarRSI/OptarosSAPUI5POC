@@ -55,6 +55,7 @@ body {
     background: url(../images/bg.png) !important;
     background-repeat: no-repeat;
     background-position: center;
+    background-size: cover !important;
     background-size: cover;
     -webkit-background-size: cover;
     -moz-background-size: cover;
@@ -94,7 +95,7 @@ h2{text-align:center;}
     
 }
 .icons:nth-child(1) {
-    margin-bottom: 2em;
+    margin-bottom: 1em;
 }
 .icons{display: flex;
     display: -webkit-flex;
@@ -104,7 +105,7 @@ h2{text-align:center;}
     flex-basis:15%;
     height: 50px;
     display: block;
-    background: #33e8ff;
+    background: #ffc033;
     text-align: center;
     line-height: 50px;
     color: #000;
@@ -121,9 +122,10 @@ input[type=text],input[type=password]{
     letter-spacing: 1px;
     font-size:17px;
     font-weight:700;
+    border-top: 1px solid #fff;
     border-left: 1px solid #fff;
     border-bottom: 1px solid #fff;
-    background:rgba(255, 255, 255, 0.81);
+    background: rgba(255, 255, 255, 0.68);
 }
 input[type=text]:hover,input[type=password]:hover{border-bottom: 1px solid #33e8ff;
     border-left: 1px solid #33e8ff;
@@ -143,13 +145,13 @@ input[type=text]:hover,input[type=password]:hover{border-bottom: 1px solid #33e8
 }
 button[type=submit]{
     width:100%;
-    background:rgb(51, 232, 255);
+    background: #ffc033;
     outline:none;
     color:#000;
     margin:31px 0px;
     font-size:18px;
     font-weight:400;
-    border: 1px solid #33e8ff;
+    border: 3px solid #ffb000db;
     padding:11px 11px;
     letter-spacing:1px;
     text-transform:uppercase;
@@ -167,7 +169,7 @@ button:hover{color:#fff;
 }
 .btnn{
     display:block;
-    margin:3em 0;
+    margin: 2em 0;
     text-align:center;
     position:relative;
 }
@@ -420,3 +422,129 @@ input.checked {
     }
     
 }
+
+/*=============Splace===========*/
+
+#splash-screen {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    overflow: hidden;
+    background-color: #e7e7e7 !important;
+    background-size: 100% !important;
+    background-position: center !important;
+    background-repeat: no-repeat !important;
+}
+#splash-screen > * {
+    /* center child divs  */
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    /* x-border-box */
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -ms-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    /* x-unselectable */
+    user-select: none;
+    -o-user-select: none;
+    -ms-user-select: none;
+    -moz-user-select: -moz-none;
+    -webkit-user-select: none;
+    cursor: default;
+}
+.splash-screen-circle-outer {
+    z-index: 20000;
+    width: 100px;
+    height: 100px;
+    border-radius: 100px;
+    margin-top: -50px;
+    margin-left: -50px;
+    border: 5px solid rgba(87, 113, 145, 0.9);
+    opacity: .9;
+    border-right: 5px solid rgba(0, 0, 0, 0);
+    border-left: 5px solid rgba(0, 0, 0, 0);
+    box-shadow: 0 0 35px #577191;
+    -moz-animation: spinPulse 1s infinite ease-in-out;
+    -webkit-animation: spinPulse 1s infinite linear;
+}
+.splash-screen-circle-inner {
+    z-index: 20001;
+    width: 80px;
+    height: 80px;
+    border-radius: 80px;
+    margin-top: -40px;
+    margin-left: -40px;
+    background-color: rgba(0, 0, 0, 0);
+    border: 5px solid rgba(87, 113, 145, 0.9);
+    opacity: .9;
+    border-left: 5px solid rgba(0, 0, 0, 0);
+    border-right: 5px solid rgba(0, 0, 0, 0);
+    box-shadow: 0 0 15px #577191;
+    -moz-animation: spinoffPulse 1s infinite linear;
+    -webkit-animation: spinoffPulse 1s infinite linear;
+}
+.splash-screen-text {
+    z-index: 20002;
+    width: 100px;
+    height: 100px;
+    line-height: 100px;
+    margin-top: -50px;
+    margin-left: -50px;
+    font-family: Verdana, Geneva, sans-serif;
+    font-size: 13px;
+    text-align: center;
+    text-shadow: 1px 1px #cccccc;
+    vertical-align: middle;
+    color: #002951;
+}
+@-moz-keyframes spinPulse {
+    0% {
+        -moz-transform: rotate(160deg);
+        opacity: 0;
+        box-shadow: 0 0 1px #577191;
+    }
+    50% {
+        -moz-transform: rotate(145deg);
+        opacity: 1;
+    }
+    100% {
+        -moz-transform: rotate(-320deg);
+        opacity: 0;
+    }
+}
+@-moz-keyframes spinoffPulse {
+    0% {
+        -moz-transform: rotate(0deg);
+    }
+    100% {
+        -moz-transform: rotate(360deg);
+    }
+}
+@-webkit-keyframes spinPulse {
+    0% {
+        -webkit-transform: rotate(160deg);
+        opacity: 0;
+        box-shadow: 0 0 1px #577191;
+    }
+    50% {
+        -webkit-transform: rotate(145deg);
+        opacity: 1;
+    }
+    100% {
+        -webkit-transform: rotate(-320deg);
+        opacity: 0;
+    }
+}
+@-webkit-keyframes spinoffPulse {
+    0% {
+        -webkit-transform: rotate(0deg);
+    }
+    100% {
+        -webkit-transform: rotate(360deg);
+    }
+}
+
+/*=============Splace===========*/
