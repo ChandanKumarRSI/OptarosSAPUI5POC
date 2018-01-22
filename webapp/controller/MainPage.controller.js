@@ -5,7 +5,7 @@ sap.ui.define([
 	return Controller.extend("OptarosSAPUI5POC.controller.MainPage", {
 		
 		onInit : function(){
-			busyDialog.close();
+			busyDialog.close(); 
 		},
 		
         onPressLogout : function(){
