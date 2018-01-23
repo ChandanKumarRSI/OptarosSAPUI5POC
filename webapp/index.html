@@ -70,34 +70,34 @@
             }
             
             function onPressLoginBtn(){
-            	busyDialog.open();
+            	show3000();
                 var users = ["user"];
                 var password = ["welcome"];
                 var sUsername = $("#userid").val();
                 var sPassword = $("#password").val();
                 if(sUsername===users[0] && sPassword===password[0]){
                 $("#idErrorTxt").hide();
-               
-               var sURL = "/V2/Northwind/Northwind.svc"
-                $.ajax({
-                       url : sURL,
-                       async: true,
-                       type : "GET",
-                       success : function(data, textStatus, jqXHR) {
-                       console.log("SUCCESS");
-                       busyDialog.close();
-                       $("#idErrorTxt").hide();
                callComponent();
-               },
-               error : function(xhr, status) {
-               console.log("ERROR");
-               busyDialog.close();
-               $("#idErrorTxt").show();
-               }
-               });
+               //var sURL = "/V2/Northwind/Northwind.svc"
+               //$.ajax({
+               //        url : sURL,
+               //        async: true,
+               //        type : "GET",
+               //        success : function(data, textStatus, jqXHR) {
+               //        console.log("SUCCESS");
+               //        busyDialog.close();
+               //        $("#idErrorTxt").hide();
+               //callComponent();
+               //},
+               //error : function(xhr, status) {
+               //console.log("ERROR");
+               //busyDialog.close();
+               //$("#idErrorTxt").show();
+               //}
+               //});
                 }else{
                 $("#idErrorTxt").show();
-                busyDialog.close();
+                //busyDialog.close();
                 }
             }
 		</script>
@@ -124,8 +124,11 @@
                         <span class="fa fa-key" aria-hidden="true"></span>
                         <div class="clear"></div>
                         </div>
+                
+                <div id="idErrorTxt" hidden>
+                	<p class="errTxt">User id or Password is wrong.</p><br>
+                </div>
                 <div class="btnn">
-                    <p class="errTxt" id="idErrorTxt" hidden>User id or Password is wrong.</p><br>
                         <button type="submit" onclick="onPressLoginBtn()">Login</button><br>
                         
                         </div>

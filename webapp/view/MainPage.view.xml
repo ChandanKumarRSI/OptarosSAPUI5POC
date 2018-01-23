@@ -2,26 +2,195 @@
 	displayBlock="true" xmlns:core="sap.ui.core" xmlns:l="sap.ui.layout" xmlns="sap.m">
 	<App>
 		<pages>
-			<Page id="idMainPage" backgroundDesign="Solid" showFooter="false">
+			<Page id="idMainPage" backgroundDesign="Solid" showFooter="true">
                 <customHeader>
-                    <Toolbar>
-                        <Image src="images/rsys.png" class="rsLogo" densityAware="false"></Image>
+                    <Toolbar class="noBorder">
+                       
+                        <Image src="images/online_icon.png" class="rsIconH" densityAware="false"></Image>
                         <ToolbarSpacer/>
-                        <Title text="Optaros SAPUI5 POC"/>
+                        <Image src="images/logo.png" class="rsLogo" densityAware="false"></Image>
                         <ToolbarSpacer/>
-                        <core:Icon
-                            src="sap-icon://log"
-                            class="iconLogout"
-                            press="onPressLogout"
-                            >
-                            <core:layoutData>
-                                <FlexItemData growFactor="1" />
-                            </core:layoutData>
-                        </core:Icon>
+                        <Image src="images/logout_icon.png" class="rsIconH" densityAware="false" press="onPressLogout"></Image>
                         
                     </Toolbar>
                 </customHeader>
-				<content></content>
+			<content>
+        <IconTabBar
+		id="idIconTabBarNoIcons"
+		expanded="{device>/isNoPhone}"
+		class="sapUiResponsiveContentPadding">
+		<items>
+			<IconTabFilter
+				text="Product List">
+				<Table class="tableProd"
+		                     width="100%" 
+		                     noDataText="No data" 
+		                     mode="None" 
+		                     showSeparators="All" 
+		                     growing="false" 
+		                     growingThreshold="20" 
+		                     growingScrollToLoad="false" 
+		                     
+		                  
+		                     items="{/}">
+		                     <infoToolbar>
+                                    <Toolbar class="labToolB" width="100%" height="auto" design="Auto" visible="true" enabled="true">
+                                        <content>
+                                            <Label class="alCenter" text="PLEASE FIND THE PRODUCT LIST BELOW" design="Standard" width="100%" required="false" textAlign="Begin" textDirection="Inherit"/>
+                                        </content>
+                                    </Toolbar>
+                                </infoToolbar>
+                                <headerToolbar>
+                                    <Toolbar class="titToolB" width="auto" height="46px" design="Transparent" visible="true" enabled="true">
+                                         <ToolbarSpacer/>
+                        <Title class="pTitle" text="PRODUCT LIST" />
+                        <ToolbarSpacer/>
+                                    </Toolbar>
+                                </headerToolbar>
+		   <columns>
+			<Column
+				width="10em">
+				<Text text="Product ID" />
+			</Column>
+			<Column
+				minScreenWidth="Tablet"
+				demandPopin="true">
+				<Text text="Name" />
+			</Column>
+			
+			<Column
+				minScreenWidth="Tablet"
+				demandPopin="true">
+				<Text text="Quantity" />
+			</Column>
+		</columns>
+		<items>
+			<ColumnListItem>
+		
+				<cells>
+					<Text
+						text="{ProductID}"
+						/>
+					<Text
+						text="{ProductName}" />
+					<Text
+						text="{QuantityPerUnit}" />
+				
+				</cells>
+			</ColumnListItem>
+		</items>
+	</Table>
+			</IconTabFilter>
+			<IconTabFilter
+				text="Call Counter">
+	
+                    <FlexBox
+					height="50px"
+					alignItems="Start"
+					justifyContent="Center">
+					<items>
+					
+				
+			
+				<Label class="phNum" text="Phone Number"></Label>
+				<HBox>
+				<core:Icon
+                            src="sap-icon://call"
+                            class="callIcons"
+                            >
+                           
+                        </core:Icon>
+				<Input type="Number" value="" placeholder="Enter Phone Number Here"></Input>
+			</HBox>
+			</items>
+			</FlexBox>
+              <FlexBox
+					height="50px"
+					alignItems="Start"
+					justifyContent="Center">
+					<items>
+					<Button class="calNow" text="Call Now" type="Accept" press="onPressCallDial"></Button>
+				
+				</items>
+			</FlexBox>
+			 <FlexBox
+					height="60px"
+					alignItems="Start"
+					justifyContent="Center">
+					<items>
+				<Label class="phNum" text="Call Count"></Label>
+					<HBox>
+				<core:Icon
+                            src="sap-icon://number-sign"
+                            class="callIcons"
+                            >
+                        </core:Icon>
+				<Input type="Number" value="44" placeholder="Enter Phone Number Here" editable="false"></Input>
+	</HBox>
+		</items>
+		</FlexBox>
+			<Table
+		                     width="100%" 
+		                     noDataText="No data" 
+		                     mode="None" 
+		                     showSeparators="All" 
+		                     growing="false" 
+		                     growingThreshold="20" 
+		                     growingScrollToLoad="false" 
+		                     
+		                  
+		                     items="{/}">
+		           
+		   <columns>
+			<Column
+				width="10em">
+				<Text text="Numbers" />
+			</Column>
+			<Column
+				minScreenWidth="Tablet"
+				demandPopin="true">
+				<Text text="Call Date/Time" />
+			</Column>
+			
+			<Column
+				minScreenWidth="Tablet"
+				demandPopin="true">
+				<Text text="Details" />
+			</Column>
+		</columns>
+		<items>
+			<ColumnListItem>
+		
+				<cells>
+					<Text
+						text="{ProductID}"
+						/>
+					<Text
+						text="{ProductName}" />
+					<Button class="calNow" icon="sap-icon://call" type="Accept" press="onPressCallDetail"></Button>
+				
+				</cells>
+			</ColumnListItem>
+		</items>
+	</Table>
+			</IconTabFilter>
+			
+		</items>
+	</IconTabBar>
+		</content>		
+	<footer>
+		<Toolbar>
+				<content>
+					<ToolbarSpacer/>
+					<core:Icon
+                            src="sap-icon://functional-location"
+                            >
+                        </core:Icon>
+				<Text text="Data Location: Local System"></Text>
+					<ToolbarSpacer/>
+				</content>
+			</Toolbar>
+		</footer>
 			</Page>
 		</pages>
 	</App>
