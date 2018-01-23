@@ -8,7 +8,7 @@ sap.ui.define([
 		
 		onInit : function(){
     	
-   	that = this;
+   	//that = this;
        	  
        	  	var sURL = "/V2/Northwind/Northwind.svc/";
 			var oDataModel = new sap.ui.model.odata.ODataModel(sURL);
@@ -24,7 +24,7 @@ sap.ui.define([
 				  
 				     var oModel = new JSONModel();
 				     oModel.setData(oData);
-				     that.oView.setModel(oModel);
+				    // that.oView.setModel(oModel);
 				     
 				},
 				function(oError) {
@@ -48,7 +48,7 @@ sap.ui.define([
     },
 		
         onPressLogout : function(){
-            window.location.reload(true);
+           // window.location.reload(true);
         }
 	});
 });
