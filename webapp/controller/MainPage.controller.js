@@ -7,7 +7,7 @@ sap.ui.define([
 	return Controller.extend("OptarosSAPUI5POC.controller.MainPage", {
 		
 		onInit : function(){
-    	
+    	 
    	//that = this;
        	  
        	  	var sURL = "/V2/Northwind/Northwind.svc/";
