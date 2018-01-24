@@ -39,7 +39,7 @@
 
 	"sap.ui5": {
 		"rootView": {
-			"viewName": "OptarosSAPUI5POC.view.MainPage",
+			"viewName": "OptarosSAPUI5POC.view.App",
 			"type": "XML"
 		},
 		"dependencies": {
@@ -70,6 +70,51 @@
 			"css": [{
 				"uri": "css/style.css"
 			}]
-		}
+		},
+		  "routing": {
+            "config": {
+                "viewPath": "OptarosSAPUI5POC.view",
+                "controlId": "app",
+                "viewLevel": 1,
+                "controlAggregation": "pages",
+                "routerClass": "sap.m.routing.Router"
+            },
+            "targets": {
+                "target_MainPage": {
+                    "viewType": "XML",
+                    "transition": "slide",
+                    "clearAggregation": true,
+                    "viewName": "MainPage",
+                    "viewLevel": 1
+                },
+                "target_Detail": {
+                    "viewType": "XML",
+                    "transition": "slide",
+                    "clearAggregation": true,
+                    "viewName": "CallDetail",
+                    "viewLevel": 2
+                }
+            },
+            "routes": [
+                {
+                    "name": "target_MainPage",
+                    "pattern": "",
+                    "titleTarget": "",
+                    "greedy": false,
+                    "target": [
+                        "target_MainPage"
+                    ]
+                },
+                {
+                    "name": "target_Detail",
+                    "pattern": "Detail",
+                    "titleTarget": "",
+                    "greedy": false,
+                    "target": [
+                        "target_Detail"
+                    ]
+                }
+            ]
+        }
 	}
 }

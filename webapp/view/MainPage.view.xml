@@ -1,12 +1,11 @@
 <mvc:View controllerName="OptarosSAPUI5POC.controller.MainPage" xmlns:html="http://www.w3.org/1999/xhtml" xmlns:mvc="sap.ui.core.mvc"
 	displayBlock="true" xmlns:core="sap.ui.core" xmlns:l="sap.ui.layout" xmlns="sap.m">
-	<App>
-		<pages>
+
 			<Page id="idMainPage" backgroundDesign="Solid" showFooter="true">
                 <customHeader>
                     <Toolbar class="noBorder">
                        
-                        <Image src="images/online_icon.png" class="rsIconH" densityAware="false"></Image>
+                        <Image id="idConnStatus" src="" class="rsIconH" densityAware="false"></Image>
                         <ToolbarSpacer/>
                         <Image src="images/logo.png" class="rsLogo" densityAware="false"></Image>
                         <ToolbarSpacer/>
@@ -17,11 +16,13 @@
 			<content>
         <IconTabBar
 		id="idIconTabBarNoIcons"
+		select="handleTabBarSelect"
 		expanded="{device>/isNoPhone}"
 		class="sapUiResponsiveContentPadding">
 		<items>
 			<IconTabFilter
-				text="Product List">
+				text="Product List"
+				key="productKey">
 				<Table class="tableProd"
 		                     width="100%" 
 		                     noDataText="No data" 
@@ -49,18 +50,16 @@
                                 </headerToolbar>
 		   <columns>
 			<Column
-				width="10em">
+				width="34%">
 				<Text text="Product ID" />
 			</Column>
 			<Column
-				minScreenWidth="Tablet"
-				demandPopin="true">
+				width="33%">
 				<Text text="Name" />
 			</Column>
 			
 			<Column
-				minScreenWidth="Tablet"
-				demandPopin="true">
+				width="33%">
 				<Text text="Quantity" />
 			</Column>
 		</columns>
@@ -82,10 +81,12 @@
 	</Table>
 			</IconTabFilter>
 			<IconTabFilter
-				text="Call Counter">
+				text="Call Counter"
+				key="callCounterKey">
 	
                     <FlexBox
-					height="50px"
+                    class="pad10"
+					height="65px"
 					alignItems="Start"
 					justifyContent="Center">
 					<items>
@@ -100,16 +101,16 @@
                             >
                            
                         </core:Icon>
-				<Input type="Number" value="" placeholder="Enter Phone Number Here"></Input>
+				<Input type="Number" id="idMobNum" value="" placeholder="Enter Phone Number Here"></Input>
 			</HBox>
 			</items>
 			</FlexBox>
               <FlexBox
 					height="50px"
-					alignItems="Start"
+					alignItems="End"
 					justifyContent="Center">
 					<items>
-					<Button class="calNow" text="Call Now" type="Accept" press="onPressCallDial"></Button>
+					<Button class="calNow" text="Call Now" type="Accept" press="onPressCallNow"></Button>
 				
 				</items>
 			</FlexBox>
@@ -129,7 +130,7 @@
 	</HBox>
 		</items>
 		</FlexBox>
-			<Table
+			<Table id="idCAllList"
 		                     width="100%" 
 		                     noDataText="No data" 
 		                     mode="None" 
@@ -143,18 +144,17 @@
 		           
 		   <columns>
 			<Column
-				width="10em">
+				width="30%">
 				<Text text="Numbers" />
 			</Column>
 			<Column
-				minScreenWidth="Tablet"
-				demandPopin="true">
+				width="50%">
 				<Text text="Call Date/Time" />
 			</Column>
 			
 			<Column
-				minScreenWidth="Tablet"
-				demandPopin="true">
+				width="20%"
+				hAlign="Center">
 				<Text text="Details" />
 			</Column>
 		</columns>
@@ -163,11 +163,11 @@
 		
 				<cells>
 					<Text
-						text="{ProductID}"
+						text="{Number}"
 						/>
 					<Text
-						text="{ProductName}" />
-					<Button class="calNow" icon="sap-icon://call" type="Accept" press="onPressCallDetail"></Button>
+						text="{Date} , {Time}" />
+					<Button icon="sap-icon://call" type="Accept" press="onPressCallDetail"></Button>
 				
 				</cells>
 			</ColumnListItem>
@@ -178,7 +178,7 @@
 		</items>
 	</IconTabBar>
 		</content>		
-	<footer>
+	<footer id="idFooter">
 		<Toolbar>
 				<content>
 					<ToolbarSpacer/>
@@ -186,12 +186,11 @@
                             src="sap-icon://functional-location"
                             >
                         </core:Icon>
-				<Text text="Data Location: Local System"></Text>
+				<Text id="idFooterText" text="Data Location: Local System"></Text>
 					<ToolbarSpacer/>
 				</content>
 			</Toolbar>
 		</footer>
 			</Page>
-		</pages>
-	</App>
+	
 </mvc:View>

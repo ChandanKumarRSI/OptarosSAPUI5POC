@@ -1,0 +1,47 @@
+<mvc:View xmlns:core="sap.ui.core" controllerName="OptarosSAPUI5POC.controller.CallDetail" xmlns:mvc="sap.ui.core.mvc"
+	xmlns:l="sap.ui.layout"
+	xmlns="sap.m" xmlns:html="http://www.w3.org/1999/xhtml">
+			
+			<Page>
+				 <customHeader>
+                    <Toolbar class="noBorder">
+                       <Button type="Transparent" icon="sap-icon://nav-back" press="handleNavButtonPress"></Button>
+                       <ToolbarSpacer/>
+                        <Image src="images/logo.png" class="rsLogo" densityAware="false"></Image>
+                        <ToolbarSpacer/>
+                        <Image src="images/logout_icon.png" class="rsIconH" densityAware="false" press="onPressLogout"></Image>
+                        
+                    </Toolbar>
+                </customHeader>
+			
+				<l:Grid defaultSpan="L12 M12 S12" class="sapUiSmallMarginTop">
+		<l:content>	
+			<ObjectListItem id="idCallTo"
+						title="Call To"
+						intro="+918800755400"
+						icon="sap-icon://call" >
+			</ObjectListItem>
+			<ObjectListItem id="idCalTime"
+						title="Call Time"
+						intro="22-01-23 , 20:33:00"
+						icon="sap-icon://appointment" >
+			</ObjectListItem>
+			<ObjectListItem id="idDuration"
+						title="Duration"
+						intro="00:30"
+						icon="sap-icon://history" >
+			</ObjectListItem>
+			<ObjectListItem id="idSuccessfully"
+						title="Successfully"
+						intro="yes"
+						icon="sap-icon://accept" >
+			</ObjectListItem>
+			
+			
+	
+	</l:content>
+	</l:Grid>			
+			
+			</Page>
+			
+</mvc:View>

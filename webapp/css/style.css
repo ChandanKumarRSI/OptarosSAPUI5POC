@@ -2,6 +2,9 @@
 .rsIconH{
     width: 2.5rem;
 }
+.pad10{
+    padding-top: 10px;
+}
 .alCenter {
     text-align: center !important;
     color: black !important;
@@ -17,6 +20,9 @@
 }
 .labToolB {
     background: #fff !important;
+}
+.sapMObjLIntro {
+    float: right !important;
 }
 .sapMTB-Info-CTX.sapMTB {
     background: #ffffff !important;
