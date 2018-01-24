@@ -1,0 +1,123 @@
+/* Enter your custom styles here */
+.rsIconH{
+    width: 2.5rem;
+}
+.alCenter {
+    text-align: center !important;
+    color: black !important;
+    font-family: serif !important;
+    font-style: normal !important;
+    margin-bottom: 25px !important;
+}
+.pTitle{
+    color: #ff6e00 !important; 
+}
+.titToolB {
+    border-bottom: 0px solid red !important;
+}
+.labToolB {
+    background: #fff !important;
+}
+.sapMTB-Info-CTX.sapMTB {
+    background: #ffffff !important;
+    color: #666666 !important;
+}
+.noBorder {
+    border: none !important;
+}
+
+.sapMITH {
+    box-shadow: none !important;
+    background-color: #0c83b3 !important;
+    border-bottom: none !important;
+}
+.sapMITBHead {
+    width: 100% !important;
+}
+.sapMITBFilterDefault {
+    width: 40% !important;
+}
+.sapMITBTextOnly .sapMITBFilterDefault.sapMITBSelected>.sapMITBText {
+    color: #ffffff !important;
+    text-shadow: none !important;
+    text-align: center !important;
+}
+.sapMITBTextOnly .sapMITBFilterDefault>.sapMITBText {
+    color: #91c8f6 !important;
+    text-shadow: none !important;
+    text-align: center !important;
+}
+.sapMITBSelected>.sapMITBContentArrow {
+    border-bottom-color: #ffffff !important;
+}
+.sapMITBContent {
+    background-color: #d1e0ee !important;
+}
+.callIcons {
+    width: 45px !important;
+    font-size: 32px !important;
+    top: 5px !important;
+    color: #8aa7b5;
+    background: #dddddd !important;
+    box-shadow: 0 0 4px 0px #928686;
+}
+.phNum {
+    text-align: left;
+    padding-right: 15px;
+    padding-top: 15px;
+    font-size: 17px;
+}
+.calNow {
+    padding-left: 30px;
+}
+
+
+/*=========================*/
+.errTxt {
+    display: block;
+    color: #d01c1c;
+    font-family: serif;
+}
+.rsLogo{
+    width: 10rem;
+    padding-left: 12px;
+    
+}
+.titleText {
+    font-size: 25px;
+    font-weight: bold;
+    color: #4185f4 !important;
+}
+.iconLogout {
+    color: #4185f4;
+    width: 50px;
+    font-size: 28px;
+    font-weight: bold;
+}
+.iconLogout:hover{
+    color:#33e8ff;
+}
+.sapMPage>.sapMPageHeader + section, .sapMPage>.sapMPageSubHeader + section, .sapMPage>.sapMPageHeader + .sapUiHiddenPlaceholder + section {
+    top: 5rem !important;
+    overflow-x: hidden !important;
+    overflow-y: auto !important;
+}
+.sapMIBar.sapMHeader-CTX {
+    color: #666666;
+    background-color: #0c83b3 !important;
+    filter: none;
+    background-image: none;
+    height: 5rem !important;;
+}
+.sapUiIcon {
+    outline-color: rgba(255, 0, 0, 0) !important;
+}
+.tableProd{
+    width: 100%;
+    background: #fff;
+}
+.sapContrast.sapMIBar-CTX.sapMFooter-CTX, .sapContrast .sapMIBar-CTX.sapMFooter-CTX {
+    background-color: #ff6e00c9 !important;
+    background-image: none !important;
+    border: #ff6e00 !important;
+}
