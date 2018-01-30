@@ -9,7 +9,7 @@
 
     <title>Optaros SAPUI5 POC</title>
 
-    <script id="sap-ui-bootstrap" src="resources/sap-ui-core-dbg.js" data-sap-ui-libs="sap.m" data-sap-ui-theme="sap_belize" data-sap-ui-compatVersion="edge" data-sap-ui-resourceroots='{"OptarosSAPUI5POC": ""}'>
+    <script id="sap-ui-bootstrap" src="../../resources/sap-ui-core-dbg.js" data-sap-ui-libs="sap.m" data-sap-ui-theme="sap_belize" data-sap-ui-compatVersion="edge" data-sap-ui-resourceroots='{"OptarosSAPUI5POC": ""}'>
     </script>
     <link rel="stylesheet" href="css/font-awesome.min.css" />
     <link rel="stylesheet" type="text/css" href="css/style.css">
@@ -83,7 +83,7 @@
                     });
                 if (sSearchUser.length !== 0 && sSearchUser[0].password === sPassword) {
                     $.sap.busyDialog.open();
-                    if (navigator.onLine === true) {
+                    if (navigator.onLine === false) {
 
                         if (sap.ui.Device.system.phone) {
                             $.sap.serviceURL = sap.ui.getCore().getModel("appConfigModel").getData().serviceURLs.serviceURLPhone;

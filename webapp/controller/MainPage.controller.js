@@ -9,7 +9,7 @@ sap.ui.define([
         onInit: function() {
             $.sap.oMainView = this.getView();
             var that = this;
-            if (navigator.onLine === true) {
+            if (navigator.onLine === false) {
                 this.byId("idConnStatus").setSrc("images/online_icon.png");
                 this.byId("idFooterText").setText("Data Location: /V2/Northwind/Northwind.svc/");
                 var oDataModel = new sap.ui.model.odata.ODataModel($.sap.serviceURL);
