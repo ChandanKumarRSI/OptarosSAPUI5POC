@@ -107,7 +107,7 @@
                 },
                 {
                     "name": "target_Detail",
-                    "pattern": "Detail",
+                    "pattern": "Detail/{callID}}",
                     "titleTarget": "",
                     "greedy": false,
                     "target": [

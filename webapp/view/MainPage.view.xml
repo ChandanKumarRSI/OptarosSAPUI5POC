@@ -1,196 +1,223 @@
 <mvc:View controllerName="OptarosSAPUI5POC.controller.MainPage" xmlns:html="http://www.w3.org/1999/xhtml" xmlns:mvc="sap.ui.core.mvc"
-	displayBlock="true" xmlns:core="sap.ui.core" xmlns:l="sap.ui.layout" xmlns="sap.m">
+	displayBlock="true" xmlns:f="sap.ui.layout.form" xmlns:core="sap.ui.core" xmlns:l="sap.ui.layout" xmlns="sap.m">
 
-			<Page id="idMainPage" backgroundDesign="Solid" showFooter="true">
-                <customHeader>
-                    <Toolbar class="noBorder">
-                       
-                        <Image id="idConnStatus" src="" class="rsIconH" densityAware="false"></Image>
-                        <ToolbarSpacer/>
-                        <Image src="images/logo.png" class="rsLogo" densityAware="false"></Image>
-                        <ToolbarSpacer/>
-                        <Image src="images/logout_icon.png" class="rsIconH" densityAware="false" press="onPressLogout"></Image>
-                        
-                    </Toolbar>
-                </customHeader>
-			<content>
-        <IconTabBar
-		id="idIconTabBarNoIcons"
-		select="handleTabBarSelect"
-		expanded="{device>/isNoPhone}"
-		class="sapUiResponsiveContentPadding">
-		<items>
-			<IconTabFilter
-				text="Product List"
-				key="productKey">
-				<Table class="tableProd"
-		                     width="100%" 
-		                     noDataText="No data" 
-		                     mode="None" 
-		                     showSeparators="All" 
-		                     growing="false" 
-		                     growingThreshold="20" 
-		                     growingScrollToLoad="false" 
-		                     
-		                  
-		                     items="{/}">
-		                     <infoToolbar>
-                                    <Toolbar class="labToolB" width="100%" height="auto" design="Auto" visible="true" enabled="true">
-                                        <content>
-                                            <Label class="alCenter" text="PLEASE FIND THE PRODUCT LIST BELOW" design="Standard" width="100%" required="false" textAlign="Begin" textDirection="Inherit"/>
-                                        </content>
-                                    </Toolbar>
-                                </infoToolbar>
-                                <headerToolbar>
-                                    <Toolbar class="titToolB" width="auto" height="46px" design="Transparent" visible="true" enabled="true">
-                                         <ToolbarSpacer/>
-                        <Title class="pTitle" text="PRODUCT LIST" />
-                        <ToolbarSpacer/>
-                                    </Toolbar>
-                                </headerToolbar>
-		   <columns>
-			<Column
-				width="34%">
-				<Text text="Product ID" />
-			</Column>
-			<Column
-				width="33%">
-				<Text text="Name" />
-			</Column>
-			
-			<Column
-				width="33%">
-				<Text text="Quantity" />
-			</Column>
-		</columns>
-		<items>
-			<ColumnListItem> 
-		
-				<cells>
-					<Text
-						text="{ProductID}"
-						/>
-					<Text
-						text="{ProductName}" />
-					<Text
-						text="{QuantityPerUnit}" />
-				
-				</cells>
-			</ColumnListItem>
-		</items>
-	</Table>
-			</IconTabFilter>
-			<IconTabFilter
-				text="Call Counter"
-				key="callCounterKey">
-	
-                    <FlexBox
-                    class="pad10"
-					height="65px"
-					alignItems="Start"
-					justifyContent="Center">
-					<items>
-					
-				
-			
-				<Label class="phNum" text="Phone Number"></Label>
-				<HBox>
-				<core:Icon
-                            src="sap-icon://call"
-                            class="callIcons"
-                            >
-                           
-                        </core:Icon>
-				<Input type="Number" id="idMobNum" value="" placeholder="Enter Phone Number Here"></Input>
-			</HBox>
-			</items>
-			</FlexBox>
-              <FlexBox
-					height="50px"
-					alignItems="End"
-					justifyContent="Center">
-					<items>
-					<Button class="calNow" text="Call Now" type="Accept" press="onPressCallNow"></Button>
-				
+	<Page id="idMainPage" backgroundDesign="Solid" showFooter="true">
+		<customHeader>
+			<Toolbar class="noBorder">
+
+				<Image id="idConnStatus" src="" class="rsIconH" densityAware="false"></Image>
+				<ToolbarSpacer/>
+				<Image src="images/logo.png" class="rsLogo" densityAware="false"></Image>
+				<ToolbarSpacer/>
+				<Image src="images/logout_icon.png" class="rsIconH" densityAware="false" press="onPressLogout"></Image>
+
+			</Toolbar>
+		</customHeader>
+		<content>
+			<IconTabBar
+				id="idIconTabBarNoIcons"
+				select="handleTabBarSelect"
+				stretchContentHeight="true"
+				expanded="{device>/isNoPhone}"
+				class="sapUiResponsiveContentPadding">
+				<items>
+					<IconTabFilter
+						id="idProdListTab"
+						text="Product List"
+						key="productKey">
+						<ScrollContainer
+							height="100%"
+							width="100%"
+							horizontal="false"
+							vertical="true">
+							<Table class="tableProd"
+								width="100%"
+								noDataText="No products available"
+								mode="None"
+								showSeparators="All"
+								growing="false"
+								growingThreshold="20"
+								growingScrollToLoad="false"
+
+
+								items="{/}">
+
+								<headerToolbar>
+									<Toolbar class="titToolB" width="auto" height="46px" design="Transparent" visible="true" enabled="true">
+										<ToolbarSpacer/>
+										<Title class="pTitle" text="PRODUCT LIST" />
+										<ToolbarSpacer/>
+									</Toolbar>
+								</headerToolbar>
+								<columns>
+									<Column
+										width="40%">
+										<Text text="Name" class="bluebg"/>
+									</Column>
+									<Column
+										width="40%">
+										<Text text="Quantity/Unit" class="bluebg"/>
+									</Column>
+
+									<Column
+										width="20%">
+										<Text text="Price" class="bluebg"/>
+									</Column>
+								</columns>
+								<items>
+									<ColumnListItem>
+
+										<cells>
+
+											<Text
+												text="{ProductName}" />
+											<Text
+												text="{QuantityPerUnit}" />
+											<Text
+												text="{UnitPrice}"
+											/>
+
+										</cells>
+									</ColumnListItem>
+								</items>
+							</Table>
+						</ScrollContainer>
+					</IconTabFilter>
+					<IconTabFilter
+						id="idCallCounterTab"
+						text="Call Counter"
+						key="callCounterKey">
+						<ScrollContainer
+							height="100%"
+							width="100%"
+							horizontal="false"
+							vertical="true">
+							<VBox class="callVB">
+								<HBox>
+									<Label class="calPhTxt" text="Phone No."></Label>
+									<core:Icon src="sap-icon://call" class="callIcons"/>
+									<!--<Input class="callInput" type="Number" maxLength="10" id="idMobNum" value=""></Input>-->
+									<MaskInput class="callInputWd" id="idMobNum" mask = "999999999999999" />
+									<Button type="Transparent" class="vv" icon="sap-icon://call"  press="onPressCallNow"></Button>
+								</HBox>
+								<HBox>
+									<Label class="calPhTxt" text="Call Count"></Label>
+									<core:Icon src="sap-icon://number-sign" class="callIcons"/>
+									<Input class="callInputWd" id="idAnsCallCounter" type="Number" value="0" editable="false"></Input>
+
+								</HBox>
+							</VBox>
+
+							<!--          <FlexBox-->
+							<!--                 class="pad10"-->
+							<!--		height="65px"-->
+							<!--		alignItems="Start"-->
+							<!--		justifyContent="Center">-->
+							<!--		<items>-->
+
+
+
+							<!--	<Label class="phNum" text="Phone Number"></Label>-->
+							<!--	<HBox>-->
+							<!--	<core:Icon-->
+							<!--                         src="sap-icon://call"-->
+							<!--                         class="callIcons"-->
+							<!--                         >-->
+
+							<!--                     </core:Icon>-->
+							<!--	<Input type="Number" id="idMobNum" value="" placeholder="Enter Phone Number Here"></Input>-->
+							<!--</HBox>-->
+							<!--</items>-->
+							<!--</FlexBox>-->
+							<!--          <FlexBox-->
+							<!--		height="50px"-->
+							<!--		alignItems="End"-->
+							<!--		justifyContent="Center">-->
+							<!--		<items>-->
+							<!--		<Button class="calNow" text="Call Now" type="Accept" press="onPressCallNow"></Button>-->
+
+							<!--	</items>-->
+							<!--</FlexBox>-->
+							<!--		 <FlexBox-->
+							<!--				height="60px"-->
+							<!--				alignItems="Start"-->
+							<!--				justifyContent="Center">-->
+							<!--				<items>-->
+							<!--			<Label class="phNum" text="Call Count"></Label>-->
+							<!--				<HBox>-->
+							<!--			<core:Icon-->
+							<!--                           src="sap-icon://number-sign"-->
+							<!--                           class="callIcons"-->
+							<!--                           >-->
+							<!--                       </core:Icon>-->
+							<!--			<Input id="idAnsCallCounter" type="Number" value="0" placeholder="Enter Phone Number Here" editable="false"></Input>-->
+							<!--</HBox>-->
+							<!--	</items>-->
+							<!--	</FlexBox>-->
+
+
+							<Table id="idCAllList"
+								width="100%"
+								noDataText="No calls available"
+								mode="None"
+								showSeparators="All"
+								growing="false"
+								growingThreshold="20"
+								growingScrollToLoad="false"
+
+
+								items="{/}">
+
+								<columns>
+									<Column
+										width="30%">
+										<Text text="Numbers" class="bluebg"/>
+									</Column>
+									<Column
+										width="50%">
+										<Text text="Call Date/Time" class="bluebg"/>
+									</Column>
+
+									<Column
+										width="20%"
+										hAlign="Center">
+										<Text text="Details" class="bluebg"/>
+									</Column>
+								</columns>
+								<items>
+									<ColumnListItem>
+
+										<cells>
+											<Text
+												text="{Number}"
+											/>
+											<Text
+												text="{Date} , {Time}" />
+											<Button icon="sap-icon://process" type="Accept" press="onPressCallDetail" class="qq"></Button>
+
+										</cells>
+									</ColumnListItem>
+								</items>
+							</Table>
+						</ScrollContainer>
+					</IconTabFilter>
+
 				</items>
-			</FlexBox>
-			 <FlexBox
-					height="60px"
-					alignItems="Start"
-					justifyContent="Center">
-					<items>
-				<Label class="phNum" text="Call Count"></Label>
-					<HBox>
-				<core:Icon
-                            src="sap-icon://number-sign"
-                            class="callIcons"
-                            >
-                        </core:Icon>
-				<Input type="Number" value="44" placeholder="Enter Phone Number Here" editable="false"></Input>
-	</HBox>
-		</items>
-		</FlexBox>
-			<Table id="idCAllList"
-		                     width="100%" 
-		                     noDataText="No data" 
-		                     mode="None" 
-		                     showSeparators="All" 
-		                     growing="false" 
-		                     growingThreshold="20" 
-		                     growingScrollToLoad="false" 
-		                     
-		                  
-		                     items="{/}">
-		           
-		   <columns>
-			<Column
-				width="30%">
-				<Text text="Numbers" />
-			</Column>
-			<Column
-				width="50%">
-				<Text text="Call Date/Time" />
-			</Column>
-			
-			<Column
-				width="20%"
-				hAlign="Center">
-				<Text text="Details" />
-			</Column>
-		</columns>
-		<items>
-			<ColumnListItem>
-		
-				<cells>
-					<Text
-						text="{Number}"
-						/>
-					<Text
-						text="{Date} , {Time}" />
-					<Button icon="sap-icon://call" type="Accept" press="onPressCallDetail"></Button>
-				
-				</cells>
-			</ColumnListItem>
-		</items>
-	</Table>
-			</IconTabFilter>
-			
-		</items>
-	</IconTabBar>
-		</content>		
-	<footer id="idFooter">
-		<Toolbar>
+			</IconTabBar>
+		</content>
+		<footer id="idFooter">
+			<Toolbar>
 				<content>
 					<ToolbarSpacer/>
 					<core:Icon
-                            src="sap-icon://functional-location"
-                            >
-                        </core:Icon>
-				<Text id="idFooterText" text="Data Location: Local System"></Text>
+						src="sap-icon://functional-location"
+					>
+					</core:Icon>
+					<Text id="idFooterText" text="Data Location: Local System"></Text>
 					<ToolbarSpacer/>
 				</content>
 			</Toolbar>
 		</footer>
-			</Page>
-	
+	</Page>
+
 </mvc:View>

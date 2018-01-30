@@ -11,9 +11,14 @@ sap.ui.define([
 		 * @memberOf OptarosSAPUI5POC.view.App
 		 */
 			onInit: function() {
-		    if(localStorage.getItem("localCallData") === null){
+		    if(localStorage.getItem("localCallData") === null  && localStorage.getItem("localCallListData") === null){
 		    var CallDetailsSets = [];
             localStorage.setItem("localCallData", JSON.stringify(CallDetailsSets));
+
+            var CallListSets = [];
+                localStorage.setItem("localCallListData", JSON.stringify(CallListSets));
+
+            localStorage.setItem("call_id", 0);
 		    }else{
 		    	//do nothing
 		    }

@@ -1,48 +1,48 @@
 sap.ui.define([
-	"sap/ui/core/mvc/Controller"
-], function(Controller) {
-	"use strict";
+    "sap/ui/core/mvc/Controller",
+    'sap/ui/model/json/JSONModel'
+], function(Controller, JSONModel) {
+    "use strict";
 
-	return Controller.extend("OptarosSAPUI5POC.controller.CallDetail", {
-       
-		/**
-		 * Called when a controller is instantiated and its View controls (if available) are already created.
-		 * Can be used to modify the View before it is displayed, to bind event handlers and do other one-time initialization.
-		 * @memberOf OptarosSAPUI5POC.view.CallDetail
-		 */
-		//	onInit: function() {
-		//
-		//	},
+    return Controller.extend("OptarosSAPUI5POC.controller.CallDetail", {
+        onInit: function() {
 
-		/**
-		 * Similar to onAfterRendering, but this hook is invoked before the controller's View is re-rendered
-		 * (NOT before the first rendering! onInit() is used for that one!).
-		 * @memberOf OptarosSAPUI5POC.view.CallDetail
-		 */
-		//	onBeforeRendering: function() {
-		//
-		//	},
+            var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
+            oRouter.getRoute("target_Detail").attachMatched(this._onRouteFound, this);
+        },
 
-		/**
-		 * Called when the View has been rendered (so its HTML is part of the document). Post-rendering manipulations of the HTML could be done here.
-		 * This hook is the same one that SAPUI5 controls get after being rendered.
-		 * @memberOf OptarosSAPUI5POC.view.CallDetail
-		 */
-		//	onAfterRendering: function() {
-		//
-		//	},
+        _onRouteFound: function(oEvt) {
+            var oArgument = oEvt.getParameter("arguments");
+            var callId = oArgument.callID;
+            var oData = JSON.parse(localStorage.getItem("localCallData"));
 
-		/**
-		 * Called when the Controller is destroyed. Use this one to free resources and finalize activities.
-		 * @memberOf OptarosSAPUI5POC.view.CallDetail
-		 */
-		//	onExit: function() {
-		//
-		//	}
-       handleNavButtonPress : function(evt){
-var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
-oRouter.navTo("target_MainPage");
-     }
-	});
+            var sCurrViewBindData = oData.filter(
+                function(item, index) {
+                    if (item.ID === parseInt(callId))
+                        return item;
+                });
+            var time = parseInt(sCurrViewBindData[0].Duration);
+            var hrs = ~~(time / 3600);
+            var mins = ~~((time % 3600) / 60);
+            var secs = time % 60;
+            var ret = "";
+
+            if (hrs > 0) {
+                ret += "" + hrs + ":" + (mins < 10 ? "0" : "");
+            }
+
+            ret += "" + mins + ":" + (secs < 10 ? "0" : "");
+            ret += "" + secs;
+            this.byId("idCallTo").setText(sCurrViewBindData[0].Number);
+            this.byId("idCalTime").setText(sCurrViewBindData[0].Date + " , " + sCurrViewBindData[0].Time);
+            this.byId("idDuration").setText(ret);
+            this.byId("idSuccessfully").setText(sCurrViewBindData[0].Status);
+
+        },
+        handleNavButtonPress: function(evt) {
+            var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
+            oRouter.navTo("target_MainPage");
+        }
+    });
 
 });

@@ -1,3 +1,51 @@
+.sapMShell {
+    overflow: hidden !important;
+}
+.sapMITBTextOnly .sapMITBFilterDefault>.sapMITBText {
+    font-size: 20px !important;
+}
+.callInputWd {
+    width: 150px !important;
+}
+.callDetailHB {
+    height: 100px;
+    background: #005c82;
+    border: 1px solid #e2e2e2;
+    padding: 24px;
+}
+.callDetailIcons {
+    width: 33px !important;
+    font-size: 29px !important;
+    margin-top: 7px !important;
+    color: #90c8f6 !important;
+}
+.callDetailLabel {
+    color: #f7f7f7 !important;
+    font-size: 19px;
+}
+.callDetailTxt {
+    color: #d4e3ea !important;
+}
+.callDetailTitle {
+    color: #ff6e00 !important;
+    width: 100% !important;
+    text-align: center;
+}
+.sapMApp {
+    width: 100% !important;
+    height: 101% !important;
+}
+CTX.sapMFooter-CTX, .sapContrast .sapMIBar-CTX.sapMFooter-CTX {
+    color: #fff !important;
+    text-shadow: none !important;
+    background-color: #ff6e00 !important;
+}
+.sapMInputBaseReadonlyInner {
+    background: #ffffff !important;
+}
+.sapUiRespGrid.sapUiRespGridVSpace1>div {
+    margin-bottom: 0rem !important;
+}
 /* Enter your custom styles here */
 .rsIconH{
     width: 2.5rem;
@@ -13,7 +61,7 @@
     margin-bottom: 25px !important;
 }
 .pTitle{
-    color: #ff6e00 !important; 
+    color: #ff6e00 !important;
 }
 .titToolB {
     border-bottom: 0px solid red !important;
@@ -60,24 +108,36 @@
     background-color: #d1e0ee !important;
 }
 .callIcons {
-    width: 45px !important;
-    font-size: 32px !important;
-    top: 5px !important;
-    color: #8aa7b5;
-    background: #dddddd !important;
-    box-shadow: 0 0 4px 0px #928686;
+    width: 27px !important;
+    font-size: 16px !important;
+    margin-top: 5px !important;
+    color: #afafaf;
+    background: #ebebeb !important;
+    box-shadow: 0 0 1px 0px #484848;
+    padding: 3px 3px 4px 3px;
 }
-.phNum {
-    text-align: left;
-    padding-right: 15px;
-    padding-top: 15px;
-    font-size: 17px;
+.callVB {
+    padding: 20px;
+}
+.calPhTxt {
+    padding-top: 10px;
+    padding-right: 10px;
 }
 .calNow {
-    padding-left: 30px;
+         padding-left: 10px;
 }
+.callInput {
+    height: 1.7rem !important;
+    width: 120px !important;
+}
+.sapMInputDivWrapper {
 
+    height: 1.7rem !important;
 
+}
+.sapMInputBaseInner {
+height: 1.7rem !important;
+}
 /*=========================*/
 .errTxt {
     display: block;
@@ -87,7 +147,7 @@
 .rsLogo{
     width: 10rem;
     padding-left: 12px;
-    
+
 }
 .titleText {
     font-size: 25px;
@@ -126,4 +186,179 @@
     background-color: #ff6e00c9 !important;
     background-image: none !important;
     border: #ff6e00 !important;
+}
+
+/*===========vikash==========*/
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus
+input:-webkit-autofill,
+textarea:-webkit-autofill,
+textarea:-webkit-autofill:hover
+textarea:-webkit-autofill:focus,
+select:-webkit-autofill,
+select:-webkit-autofill:hover,
+select:-webkit-autofill:focus {
+  -webkit-text-fill-color: #fff;
+  -webkit-box-shadow: 0 0 0px 100px rgba(0, 0, 0, 0.75) inset;
+  background:tranparent;
+
+}
+
+.pad10 {
+    padding-top: 0px;
+    margin-bottom: 0px !important;
+}
+
+.sapMBtnInner{ text-shadow:none !important;}
+
+tr:nth-child(even) {background: #f2f2f2!important;}
+tr:nth-child(odd) {background: #e7e7e7!important; }
+.sapMListTblCell {padding: 5px 10px 5px 10px !important;vertical-align: middle !important;font-size: 0.875rem !important;}
+.sapMListTbl th{ background:#0c83b3 !important;  border-right: 1px solid rgba(0, 0, 0, 0.2) !important;}
+.sapMListTblCell span{ color:#000 !important;}
+th span.bluebg{color:#fff!important; font-weight:bold !important;}
+
+.sapMLIBShowSeparator>td {
+    border-top: 1px solid #e5e5e5;
+    border-right: 1px solid rgba(0, 0, 0, 0.2) !important;
+}
+.qq span.sapMBtnInner.sapMBtnAccept {
+    background: none !important;
+    outline: none;
+    color: #000 !important;
+    margin: 1px 0px;
+    font-size: 20px;
+    font-weight: 400;
+    border: none;
+    padding: 0px 0px;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: 0.5s all;
+    -webkit-transition: 0.5s all;
+    -o-transition: 0.5s all;
+    -moz-transition: 0.5s all;
+    -ms-transition: 0.5s all;
+    box-shadow:none !important;
+
+}
+
+.qq span.sapMBtnInner.sapMBtnAccept:hover {
+    background: none !important;
+    outline: none;
+    color: #000 !important;
+    margin: 1px 0px;
+    font-size: 20px;
+    font-weight: 400;
+    border: none;
+    padding: 0px 0px;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: 0.5s all;
+    -webkit-transition: 0.5s all;
+    -o-transition: 0.5s all;
+    -moz-transition: 0.5s all;
+    -ms-transition: 0.5s all;
+    box-shadow:none !important;
+
+}
+
+/*==================Vikash Button CSS==============*/
+.sapMBtnContent {
+
+    display: block;
+
+     overflow: visible;
+
+    text-overflow: ellipsis;
+
+    white-space: nowrap;
+     font-size: 18px !important;
+
+    vertical-align: top;
+
+    line-height: 4px;
+    font-weight: 400 !important;
+
+}
+.sapMBtn {
+    height: 2.5rem !important;
+}
+button.vv:hover {
+
+    color: #fff;
+
+    background: rgba(227, 154, 0, 0.9);
+
+    border: 3px solid #e39a00;
+
+}
+
+
+
+button.vv {
+    width: 43px;
+    height: 43px !important;
+    background: #ffc033;
+    outline: none;
+    color: #fff !important;
+    margin: 0px 0px 0px 15px;
+    font-size: 11px !important;
+    font-weight: 200;
+    border: 3px solid #ffb000;
+    padding: 15px 10px 0px 0px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: 0.5s all;
+    -webkit-transition: 0.5s all;
+    -o-transition: 0.5s all;
+    -moz-transition: 0.5s all;
+    -ms-transition: 0.5s all;
+    vertical-align: middle;
+}
+
+button.vv .sapMBtnIcon {
+
+    font-size: 1.375rem;
+
+    line-height: 4px;
+
+    text-align: center;
+
+    margin: 0;
+
+    padding: 0;
+
+    vertical-align: top;
+
+    max-height: 2.375rem;
+
+    color: #9e7724 !important;
+
+    font-size:24px;
+
+}
+
+button.vv .sapMBtnTransparent {
+    background-image: none !important;
+    background-color: #427cac00 !important;
+    border-color: transparent !important;
+    color: #9e7724;
+    font-size: 22px;
+}
+.sapMBtn .sapMBtnInner, .sapMBtn .sapMBtnContent {
+    background: transparent !important;
+}
+
+button.vv .sapMBtnInner{ text-align:left;}
+
+.sapMBtn:hover>.sapMBtnTransparent.sapMBtnHoverable {
+
+    background-color: rgba(179,179,179,0);
+
+    border: none !important;
+
 }

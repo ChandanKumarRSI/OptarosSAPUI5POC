@@ -1,162 +1,171 @@
 <!DOCTYPE HTML>
 <html>
-	<head> 
-		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-		<meta charset="UTF-8">
-        <meta name="viewport" content="minimal-ui, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
 
-		<title>Optaros SAPUI5 POC</title> 
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="minimal-ui, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-		<script id="sap-ui-bootstrap"
-			src="../../resources/sap-ui-core.js"
-			data-sap-ui-libs="sap.m"
-			data-sap-ui-theme="sap_belize"
-			data-sap-ui-compatVersion="edge"
-			data-sap-ui-resourceroots='{"OptarosSAPUI5POC": ""}'>
-		</script>
-        <link rel="stylesheet" href="css/font-awesome.min.css" />
-		<link rel="stylesheet" type="text/css" href="css/style.css">
-        <link rel="stylesheet" type="text/css" href="css/LoginStyle.css">
-        <!--<script type="text/javascript" src="cordova.js"></script>-->
-		<script>
-            busyDialog = new sap.m.BusyDialog("idBusyDia", {});
+    <title>Optaros SAPUI5 POC</title>
 
-			function hideBusyIndicator() {
-			    sap.ui.core.BusyIndicator.hide();
-			}
-			
-			function showBusyIndicator(iDuration, iDelay) {
-			    sap.ui.core.BusyIndicator.show(iDelay);
-			
-			    if (iDuration && iDuration > 0) {
-			        if (this._sTimeoutId) {
-			            jQuery.sap.clearDelayedCall(this._sTimeoutId);
-			            this._sTimeoutId = null;
-			        }
-			
-			        this._sTimeoutId = jQuery.sap.delayedCall(iDuration, this, function() {
-			            this.hideBusyIndicator();
-			        });
-			    }
-			}
-			
-			function show3000() {
-			    this.showBusyIndicator(4000);
-			}
-			
-			function callComponent() {
-			    sap.ui.getCore().attachInit(function() {
-			        new sap.m.Shell({
-			            app: new sap.ui.core.ComponentContainer({
-			                height: "100%",
-			                name: "OptarosSAPUI5POC"
-			            })
-			        }).placeAt("content");
-			    });
-			}
-			
-			function appReady() {
-			    $("#splash-screen").remove();
-			    $("#idLoginPage").fadeIn(2000).show();
-			}
-			
-			window.onload = function() {
-			    if (window.cordova) {
-			        document.addEventListener("deviceready", appReady, false);
-			    } else {
-			        // uncomment next line to enable app start
-			        appReady();
-			    }
-			}
-			
-			function onPressLoginBtn() {
-			    // Perform basic validation first
-			    if(validateLoginForm() == true) {
-				    //	show3000();
-				    var userCredentials = {
-				        "guest": "welcome",
-				        "msima": "welcome1",
-				        "opepin": "welcome2"
-				    };
-				    //var users = ["user"];
-				    //var password = ["welcome"];
-				    var sUsername = $("#userid").val().toLowerCase();
-				    var sPassword = $("#password").val();
-				    var matchingCredentials = userCredentials[sUsername];
-				    if (matchingCredentials != undefined && matchingCredentials === sPassword) {
-				        //if(sUsername===users[0] && sPassword===password[0]){
-				        // $("#idErrorTxt").hide();
-				        //callComponent();
-				        busyDialog.open();
-				        var sURL = "/V2/Northwind/Northwind.svc"
-				        $.ajax({
-				            url: sURL,
-				            async: true,
-				            type: "GET",
-				            success: function(data, textStatus, jqXHR) {
-				                console.log("SUCCESS");
-				                busyDialog.close();
-				                //$("#idErrorTxt").hide();
-				                callComponent();
-				            },
-				            error: function(xhr, status) {
-				                console.log("ERROR");
-				                busyDialog.close();
-				                $("#idErrorTxt").show();
-				            }
-				        });
-				    } else {
-				        //$("#idErrorTxt").show();
-				        sap.m.MessageToast.show("Invalid username or password",{});
-				        busyDialog.close();
-				    }
-			    }
-			}
-			
-			function validateLoginForm() {
-				var returnVal = true;
-				var sUsername = $("#userid").val();
-			    var sPassword = $("#password").val();
-			    if(sUsername.trim() === "" || sPassword.trim() === "") {
-			    	sap.m.MessageToast.show("Username and password can't be empty.");
-			    	returnVal = false;
-			    }
-			    return returnVal;
-			}
-		</script>
-	</head>
+    <script id="sap-ui-bootstrap" src="resources/sap-ui-core-dbg.js" data-sap-ui-libs="sap.m" data-sap-ui-theme="sap_belize" data-sap-ui-compatVersion="edge" data-sap-ui-resourceroots='{"OptarosSAPUI5POC": ""}'>
+    </script>
+    <link rel="stylesheet" href="css/font-awesome.min.css" />
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link rel="stylesheet" type="text/css" href="css/LoginStyle.css">
+    <script type="text/javascript" src="appConfig.json"></script>
+    <script type="text/javascript" src="cordova.js"></script>
+    <script>
+        $.sap.busyDialog = new sap.m.BusyDialog("idBusyDia", {});
 
-	<body class="sapUiBody" id="content">
-		<div id="splash-screen">
-			<div class="splash-screen-text">Loading Opraros</div>
-			<div class="splash-screen-circle-outer"></div>
-			<div class="splash-screen-circle-inner"></div>
-		</div>
-		<div id="idLoginPage" class="main-rs" hidden>
-			<h2>
-				<img src="images/logo.png" alt="Optaros" class="t-rs">
-			</h2>
-			<div class="login-rsL">
-				<div class="icons">
-					<input type="text" id="userid" name="user" placeholder="Enter user id here" value="" required=""/>
-					<span class="fa fa-user" aria-hidden="true"></span>
-					<div class="clear"></div>
-				</div>
-				<div class="icons">
-					<input type="password" id="password" name="password" placeholder="Enter password here" value="" required="">
-					<span class="fa fa-key" aria-hidden="true"></span>
-					<div class="clear"></div>
-				</div>
-				<!--<div id="idErrorTxt" hidden>-->
-				<!--	<p class="errTxt">User id or Password is wrong.</p>-->
-				<!--	<br>-->
-				<!--</div>-->
-				<div class="btnn">
-					<button type="submit" onclick="onPressLoginBtn()">Login</button>
-					<br/>
-				</div>
-			</div>
-		</div>
-	</body>
+        function hideBusyIndicator() {
+            sap.ui.core.BusyIndicator.hide();
+        }
+
+        function showBusyIndicator(iDuration, iDelay) {
+            sap.ui.core.BusyIndicator.show(iDelay);
+
+            if (iDuration && iDuration > 0) {
+                if (this._sTimeoutId) {
+                    jQuery.sap.clearDelayedCall(this._sTimeoutId);
+                    this._sTimeoutId = null;
+                }
+
+                this._sTimeoutId = jQuery.sap.delayedCall(iDuration, this, function() {
+                    this.hideBusyIndicator();
+                });
+            }
+        }
+
+        function show3000() {
+            this.showBusyIndicator(4000);
+        }
+
+        function callComponent() {
+            sap.ui.getCore().attachInit(function() {
+                new sap.m.Shell({
+                    app: new sap.ui.core.ComponentContainer({
+                        height: "100%",
+                        name: "OptarosSAPUI5POC"
+                    })
+                }).placeAt("content");
+            });
+        }
+
+        function appReady() {
+            $("#splash-screen").remove();
+            var oAppConfigModel = new sap.ui.model.json.JSONModel("appConfig.json");
+            sap.ui.getCore().setModel(oAppConfigModel, "appConfigModel");
+            $("#idLoginPage").fadeIn(2000).show();
+        }
+
+        window.onload = function() {
+            if (window.cordova) {
+                document.addEventListener("deviceready", appReady, false);
+            } else {
+
+                appReady();
+            }
+        }
+
+        function onPressLoginBtn() {
+
+            if (validateLoginForm() == true) {
+
+                var sUsername = $("#userid").val().trim().toLowerCase();
+                var sPassword = $("#password").val();
+                var userList = sap.ui.getCore().getModel("appConfigModel").getData().users;
+                var sSearchUser = userList.filter(
+                    function(item, index) {
+                        if (item.userid === sUsername)
+                            return item;
+                    });
+                if (sSearchUser.length !== 0 && sSearchUser[0].password === sPassword) {
+                    $.sap.busyDialog.open();
+                    if (navigator.onLine === true) {
+
+                        if (sap.ui.Device.system.phone) {
+                            $.sap.serviceURL = sap.ui.getCore().getModel("appConfigModel").getData().serviceURLs.serviceURLPhone;
+                        } else {
+                            $.sap.serviceURL = sap.ui.getCore().getModel("appConfigModel").getData().serviceURLs.serviceURLWeb;
+                        }
+
+                        $.ajax({
+                            url: $.sap.serviceURL,
+                            async: true,
+                            type: "GET",
+                            success: function(data, textStatus, jqXHR) {
+                                console.log("SUCCESS");
+
+                                callComponent();
+                            },
+                            error: function(xhr, status) {
+                                console.log("ERROR");
+
+                                sap.m.MessageToast.show("Unable to reach server", {width: "20em"});
+                                callComponent();
+
+                            }
+                        });
+                    } else {
+
+                        setTimeout(function() {
+                            callComponent();
+                        }, 2000);
+                    }
+                } else {
+
+                    sap.m.MessageToast.show("Invalid username or password", {width: "20em"});
+
+                }
+
+            }
+        }
+
+        function validateLoginForm() {
+            var returnVal = true;
+            var sUsername = $("#userid").val();
+            var sPassword = $("#password").val();
+            if (sUsername.trim() === "" || sPassword.trim() === "") {
+                sap.m.MessageToast.show("Username and password can't be empty.", {width: "25em"});
+                returnVal = false;
+            }
+            return returnVal;
+        }
+    </script>
+</head>
+
+<body class="sapUiBody" id="content">
+<div id="splash-screen">
+    <div class="splash-screen-text">Loading Opraros</div>
+    <div class="splash-screen-circle-outer"></div>
+    <div class="splash-screen-circle-inner"></div>
+</div>
+<div id="idLoginPage" class="main-rs" hidden>
+    <h2>
+        <img src="images/logo.png" alt="Optaros" class="t-rs">
+    </h2>
+    <div class="login-rsL">
+        <div class="icons">
+            <span class="fa fa-user" aria-hidden="true"></span>
+            <input type="text" id="userid" name="user" placeholder="Enter User ID" value="" required="" />
+
+            <div class="clear"></div>
+        </div>
+        <div class="icons">
+            <span class="fa fa-lock" aria-hidden="true"></span>
+            <input type="password" id="password" name="password" placeholder="Enter password" value="" required="">
+
+            <div class="clear"></div>
+        </div>
+
+        <div class="btnn">
+            <button type="submit" onclick="onPressLoginBtn()">Login</button>
+            <br/>
+        </div>
+    </div>
+</div>
+</body>
+
 </html>

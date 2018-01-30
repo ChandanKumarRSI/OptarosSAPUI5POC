@@ -1,0 +1,21 @@
+{
+  "users": [
+    {
+      "userid": "guest",
+      "password": "welcome"
+    },
+    {
+      "userid": "msima",
+      "password": "welcome1"
+    },
+    {
+      "userid": "opepin",
+      "password": "welcome2"
+    }
+
+  ],
+  "serviceURLs":{
+    "serviceURLWeb": "/V2/Northwind/Northwind.svc/",
+    "serviceURLPhone": "http://services.odata.org/V2/Northwind/Northwind.svc/"
+  }
+}
